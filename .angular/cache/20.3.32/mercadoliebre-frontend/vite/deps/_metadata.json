@@ -1,37 +1,58 @@
 {
-  "hash": "58f8ece5",
-  "configHash": "830c7984",
-  "lockfileHash": "1b791e07",
-  "browserHash": "e9d44200",
+  "hash": "aa78f535",
+  "configHash": "4af2f0d9",
+  "lockfileHash": "a991f1d2",
+  "browserHash": "a707c804",
   "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "33544b57",
+      "needsInterop": false
+    },
+    "@angular/common/http": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "3d7dee09",
+      "needsInterop": false
+    },
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "1ea12254",
+      "fileHash": "8882aeac",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "808ec7a1",
+      "fileHash": "8883f0e9",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "dd570629",
+      "fileHash": "995476c7",
       "needsInterop": false
     },
     "zone.js": {
       "src": "../../../../../../node_modules/zone.js/fesm2015/zone.js",
       "file": "zone__js.js",
-      "fileHash": "fda94719",
+      "fileHash": "b0758c1e",
       "needsInterop": true
     }
   },
   "chunks": {
-    "chunk-Y5JT5465": {
-      "file": "chunk-Y5JT5465.js"
+    "chunk-EC5SKPGC": {
+      "file": "chunk-EC5SKPGC.js"
+    },
+    "chunk-FTFNYTH5": {
+      "file": "chunk-FTFNYTH5.js"
+    },
+    "chunk-5FUTMSBZ": {
+      "file": "chunk-5FUTMSBZ.js"
+    },
+    "chunk-OP7REDXI": {
+      "file": "chunk-OP7REDXI.js"
     },
     "chunk-TWPI2JKB": {
       "file": "chunk-TWPI2JKB.js"

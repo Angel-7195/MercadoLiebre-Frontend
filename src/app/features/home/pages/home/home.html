@@ -1,0 +1,252 @@
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="container">
+
+        <div class="top-bar">
+
+            <div class="logo" (click)="goHome()">
+                <i class="bi bi-shop"></i>
+                <span>MercadoLiebre</span>
+            </div>
+
+            <div class="search-bar">
+
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Buscar productos, marcas y más...">
+
+                <button class="btn btn-search">
+                    <i class="bi bi-search"></i>
+                </button>
+
+            </div>
+
+            <div class="actions">
+
+                <button
+                    class="btn btn-login"
+                    (click)="goToLogin()">
+                    Ingresar
+                </button>
+
+                <button
+                    class="btn btn-register"
+                    (click)="goToRegister()">
+                    Crear cuenta
+                </button>
+
+                <button class="btn btn-cart">
+                    <i class="bi bi-cart3"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+        <nav class="menu">
+
+            <a href="#">Categorías</a>
+            <a href="#">Vender</a>
+            <a href="#">Ayuda</a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="container hero-content">
+
+        <div class="hero-text">
+
+            <h1>
+                Compra millones de productos
+            </h1>
+
+            <p>
+                Todo lo que necesitas en tecnología, hogar, moda, deportes,
+                videojuegos y mucho más.
+            </p>
+
+            <button class="btn btn-primary btn-lg">
+                Explorar productos
+            </button>
+
+        </div>
+
+        <div class="hero-image">
+
+            <i class="bi bi-bag-heart-fill"></i>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= BENEFICIOS ================= -->
+
+<section class="benefits container">
+
+    <div class="benefit-card">
+
+        <i class="bi bi-truck"></i>
+
+        <h5>Envíos rápidos</h5>
+
+        <p>Recibe tus compras en tiempo récord.</p>
+
+    </div>
+
+    <div class="benefit-card">
+
+        <i class="bi bi-shield-check"></i>
+
+        <h5>Compra protegida</h5>
+
+        <p>Tu dinero siempre estará seguro.</p>
+
+    </div>
+
+    <div class="benefit-card">
+
+        <i class="bi bi-credit-card"></i>
+
+        <h5>Pagos seguros</h5>
+
+        <p>Múltiples métodos de pago.</p>
+
+    </div>
+
+</section>
+
+<!-- ================= CATEGORÍAS ================= -->
+
+<section class="container categories">
+
+    <h2>Categorías populares</h2>
+
+    <div class="category-grid">
+
+        <div class="category">
+            <i class="bi bi-phone"></i>
+            <span>Tecnología</span>
+        </div>
+
+        <div class="category">
+            <i class="bi bi-controller"></i>
+            <span>Videojuegos</span>
+        </div>
+
+        <div class="category">
+            <i class="bi bi-house"></i>
+            <span>Hogar</span>
+        </div>
+
+        <div class="category">
+            <i class="bi bi-bicycle"></i>
+            <span>Deportes</span>
+        </div>
+
+        <div class="category">
+            <i class="bi bi-watch"></i>
+            <span>Accesorios</span>
+        </div>
+
+        <div class="category">
+            <i class="bi bi-book"></i>
+            <span>Libros</span>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= PRODUCTOS ================= -->
+
+<section class="container featured">
+
+    <h2>Productos destacados</h2>
+
+    <div class="products">
+
+        <div class="product-card" *ngFor="let item of [1,2,3,4,5,6,7,8]">
+
+            <div class="product-image">
+
+                <i class="bi bi-image"></i>
+
+            </div>
+
+            <div class="product-info">
+
+                <span class="price">$250.000</span>
+
+                <p class="name">
+                    Producto de ejemplo
+                </p>
+
+                <span class="shipping">
+                    Envío gratis
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= BANNER ================= -->
+
+<section class="container">
+
+    <div class="promo">
+
+        <h2>Semana MercadoLiebre</h2>
+
+        <p>Hasta 40% de descuento en miles de productos.</p>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container footer-content">
+
+        <div>
+
+            <h5>MercadoLiebre</h5>
+
+            <p>
+                Compra y vende de forma fácil, rápida y segura.
+            </p>
+
+        </div>
+
+        <div>
+
+            <a href="#">Quiénes somos</a>
+
+            <a href="#">Términos</a>
+
+            <a href="#">Privacidad</a>
+
+            <a href="#">Ayuda</a>
+
+        </div>
+
+    </div>
+
+</footer>
