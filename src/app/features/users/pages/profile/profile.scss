@@ -1,0 +1,150 @@
+:host {
+    display: block;
+    min-height: 100vh;
+    background: #ebebeb;
+}
+
+/* ================= HEADER ================= */
+
+.profile-header {
+    background: #ffe600;
+}
+
+.profile-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo {
+    cursor: pointer;
+}
+
+.header-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* ================= MAIN ================= */
+
+main {
+    padding: 4rem 0;
+}
+
+main .container {
+    display: flex;
+    justify-content: center;
+}
+
+/* ================= CARD ================= */
+
+.profile-card {
+
+    background: white;
+
+    width: 100%;
+    max-width: 500px;
+
+    border-radius: 12px;
+
+    padding: 2.5rem;
+
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .12);
+
+    text-align: center;
+}
+
+.profile-card h2 {
+    margin-bottom: .5rem;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+/* ================= FORM ================= */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: .5rem;
+}
+
+/* ================= PASSWORD ================= */
+
+.password-container {
+    position: relative;
+}
+
+.toggle-password {
+
+    position: absolute;
+
+    top: 50%;
+    right: 15px;
+
+    transform: translateY(-50%);
+
+    background: none;
+    border: none;
+
+    cursor: pointer;
+}
+
+/* ================= BUTTONS ================= */
+
+.buttons {
+
+    display: flex;
+    gap: 1rem;
+
+    margin-top: 1rem;
+}
+
+.buttons button {
+
+    flex: 1;
+
+    height: 48px;
+
+    border-radius: 8px;
+
+    font-weight: 600;
+
+    transition: .2s;
+}
+
+.buttons button:hover {
+    transform: translateY(-2px);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 576px) {
+
+    .profile-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .header-links {
+        gap: 1rem;
+    }
+
+}

@@ -1,0 +1,132 @@
+:host {
+    display: block;
+    min-height: 100vh;
+    background: #ebebeb;
+}
+
+.login-header {
+    background: #ffe600;
+}
+
+.login-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+main {
+    padding: 4rem 0;
+}
+
+main .container {
+    display: flex;
+    justify-content: center;
+}
+
+.login-card{
+    background: white;
+    width: 100%;
+    max-width: 420px;
+    min-height: 450px;
+
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.12);
+    padding: 2.5rem;
+    text-align: center;
+}
+
+.password-container{
+    position: relative;
+}
+
+.toggle-password{
+    position: absolute;
+
+    right: 15px;
+    top: 50%;
+
+    transform:translateY(-50%);
+
+    border: none;
+    background:none;
+
+    cursor:pointer;
+
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.login-button{
+
+    width: 100%;
+
+    height: 48px;
+
+    font-size:1rem;
+
+    font-weight:600;
+    
+    border-radius:8px;
+}
+
+.forgot-password{
+    text-align: center;
+    margin-top: -8px;
+}
+
+.forgot-password a{
+    text-decoration: none;
+    font-size: .95rem;
+}
+
+.divider{
+    display:flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.divider::before,
+.divider::after{
+    content:"";
+    flex:1;
+    height: 1px;
+    background: #dee2e6;
+}
+
+.divider span{
+    margin: 0 15px;
+    color:#6c757d;
+    font-size: .9rem;
+}
+
+.register-text{
+    text-align: center;
+    margin-bottom: .5rem;
+    color:#555;
+}
+
+.register-button{
+    width:100%;
+    height:48px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.login-button:hover{
+    transform:translateY(-2px);
+    transition:.2s;
+}
+
+.register-button:hover{
+    transform: translateY(-2px);
+    transition: .2s;
+}
+
+.logo{
+    cursor:pointer;
+}
