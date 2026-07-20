@@ -53,4 +53,52 @@ export class AuthService {
     localStorage.removeItem(this.TOKEN_KEY);
   }
 
+  getUserId(): string | null {
+
+    const token = this.getToken();
+
+    if (!token) {
+      return null;
+    }
+
+    try {
+
+      const payload = JSON.parse(
+        atob(token.split('.')[1])
+      );
+
+      return payload.sub;
+
+    } catch {
+
+      return null;
+
+    }
+
+  }
+
+  getUserRole(): string | null {
+
+    const token = this.getToken();
+
+    if (!token) {
+      return null;
+    }
+
+    try {
+
+      const payload = JSON.parse(
+        atob(token.split('.')[1])
+      );
+
+      return payload.role;
+
+    } catch {
+
+      return null;
+
+    }
+
+  }
+
 }

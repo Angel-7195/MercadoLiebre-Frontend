@@ -46,8 +46,12 @@
                 <!-- Usuario autenticado -->
                  <ng-template #loggedUser>
 
-                    <button class="btn btn-login">
+                    <button
+                        class="btn btn-login"
+                        (click)="goToProfile()">
+
                         Mi cuenta
+
                     </button>
 
                     <button

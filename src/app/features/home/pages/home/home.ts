@@ -29,6 +29,10 @@ export class Home {
         this.router.navigate(['/register']);
     }
 
+    goToProfile(): void {
+        this.router.navigate(['/profile']);
+    }
+
     searchProducts(): void {
         // Se implementará cuando exista el buscador conectado a la API.
     }

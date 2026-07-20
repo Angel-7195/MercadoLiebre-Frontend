@@ -1,26 +1,25 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-
 import { Observable } from "rxjs";
 
 import {
-    User,
-    CreateUser
-} from '../models/user.model';
+  User,
+  CreateUser,
+  UpdateUser
+} from "../models/user.model";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: "root"
 })
-
 export class UserService {
 
-    private readonly api= 'http://127.0.0.1:8000/api/users';
+  private readonly api = "http://127.0.0.1:8000/api/users";
 
-    constructor(
-        private http: HttpClient
-    ) {}
+  constructor(
+    private http: HttpClient
+  ) {}
 
-    createUser(
+  createUser(
     user: CreateUser
   ): Observable<User> {
 
@@ -31,6 +30,26 @@ export class UserService {
 
   }
 
+  getUser(
+    id: string
+  ): Observable<User> {
 
+    return this.http.get<User>(
+      `${this.api}/${id}`
+    );
+
+  }
+
+  updateUser(
+    id: string,
+    user: UpdateUser
+  ): Observable<User> {
+
+    return this.http.put<User>(
+      `${this.api}/${id}`,
+      user
+    );
+
+  }
 
 }
