@@ -1,13 +1,30 @@
 <header class="login-header">
     <div class="container">
-        <div class="logo">
+        <div
+        class="logo"
+        (click)="goToHome()">
             <i class="bi bi-shop"></i>
             <span>MercadoLiebre</span>
         </div>
 
-        <button class="btn btn-link">
-            Ayuda
-        </button>
+        <div class="header-actions">
+
+            <button
+                class="btn btn-link"
+                (click)="goToHome()">
+
+                Inicio
+
+            </button>
+
+            <button
+                class="btn btn-link">
+
+                Ayuda
+
+            </button>
+
+        </div>
     </div>
 </header>
 
@@ -22,7 +39,7 @@
                 Ingresa tus credenciales para continuar.
             </p>
 
-            <form>
+            <form (ngSubmit)="login()">
 
                 <!-- Correo -->
                 <div class="form-group">
@@ -33,6 +50,8 @@
 
                     <input
                         type="email"
+                        [(ngModel)]="email"
+                        name="email"
                         id="email"
                         class="form-control"
                         placeholder="correo@ejemplo.com">
@@ -50,6 +69,8 @@
 
                         <input
                             [type]="showPassword ? 'text' : 'password'"
+                            [(ngModel)]="password"
+                            name="password"
                             id="password"
                             class="form-control"
                             placeholder="Contraseña">
@@ -101,7 +122,8 @@
 
                 <button
                     type="button"
-                    class="btn btn-outline-primary register-button">
+                    class="btn btn-outline-primary register-button"
+                    (click)="goToRegister()">
 
                     Crear cuenta
 

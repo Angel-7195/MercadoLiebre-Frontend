@@ -2,6 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { AuthService } from '../../../../core/services/auth.service';
+
+
 @Component({
     selector: 'app-home',
     standalone: true,
@@ -12,6 +15,7 @@ import { Router } from '@angular/router';
 export class Home {
 
     private readonly router = inject(Router);
+    private readonly authService = inject(AuthService);
 
     goHome(): void {
         this.router.navigate(['/']);
@@ -27,6 +31,16 @@ export class Home {
 
     searchProducts(): void {
         // Se implementará cuando exista el buscador conectado a la API.
+    }
+
+    isLoggedIn(): boolean {
+        return this.authService.isLoggedIn();
+    }
+
+    logout(): void {
+
+        this.authService.logout();
+        this.router.navigate(['/']);
     }
 
 }

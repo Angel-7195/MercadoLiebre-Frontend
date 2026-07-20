@@ -26,17 +26,36 @@
 
             <div class="actions">
 
-                <button
-                    class="btn btn-login"
-                    (click)="goToLogin()">
-                    Ingresar
-                </button>
+                <!-- Usuario NO autenticado -->>
+                 <ng-container *ngIf="!isLoggedIn(); else loggedUser">
 
-                <button
-                    class="btn btn-register"
-                    (click)="goToRegister()">
-                    Crear cuenta
-                </button>
+                    <button
+                        class="btn btn-login"
+                        (click)="goToLogin()">
+                        Ingresar
+                    </button>
+
+                    <button
+                        class="btn btn-register"
+                        (click)="goToRegister()">
+                        Crear cuenta
+                    </button>
+                
+                </ng-container>
+
+                <!-- Usuario autenticado -->
+                 <ng-template #loggedUser>
+
+                    <button class="btn btn-login">
+                        Mi cuenta
+                    </button>
+
+                    <button
+                        class="btn btn-register"
+                        (click)="logout()">
+                        Cerrar sesión
+                    </button>
+                 </ng-template>
 
                 <button class="btn btn-cart">
                     <i class="bi bi-cart3"></i>
