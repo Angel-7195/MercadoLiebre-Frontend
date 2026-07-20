@@ -1,0 +1,153 @@
+<header class="login-header">
+    <div class="container">
+
+        <div
+            class="logo"
+            (click)="goToHome()">
+
+            <i class="bi bi-shop"></i>
+            <span>MercadoLiebre</span>
+
+        </div>
+
+        <div class="header-actions">
+
+            <button
+                type="button"
+                class="btn btn-link"
+                (click)="goToHome()">
+
+                Inicio
+
+            </button>
+
+            <button
+                type="button"
+                class="btn btn-link">
+
+                Ayuda
+
+            </button>
+
+        </div>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="container">
+
+        <div class="login-card">
+
+            <h2>Crear cuenta</h2>
+
+            <p class="subtitle">
+                Completa la información para crear tu cuenta.
+            </p>
+
+            <form (ngSubmit)="register()">
+
+                <!-- Nombre completo -->
+                <div class="form-group">
+
+                    <label for="fullName">
+                        Nombre completo
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        class="form-control"
+                        [(ngModel)]="fullName"
+                        placeholder="Juan Pérez">
+
+                </div>
+
+                <!-- Correo -->
+                <div class="form-group">
+
+                    <label for="email">
+                        Correo electrónico
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="form-control"
+                        [(ngModel)]="email"
+                        placeholder="correo@ejemplo.com">
+
+                </div>
+
+                <!-- Contraseña -->
+                <div class="form-group">
+
+                    <label for="password">
+                        Contraseña
+                    </label>
+
+                    <div class="password-container">
+
+                        <input
+                            [type]="showPassword ? 'text' : 'password'"
+                            id="password"
+                            name="password"
+                            class="form-control"
+                            [(ngModel)]="password"
+                            placeholder="Mínimo 8 caracteres">
+
+                        <button
+                            type="button"
+                            class="toggle-password"
+                            (click)="togglePassword()">
+
+                            <i
+                                class="bi"
+                                [class.bi-eye]="!showPassword"
+                                [class.bi-eye-slash]="showPassword">
+                            </i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Botón crear cuenta -->
+                <button
+                    type="submit"
+                    class="btn btn-primary login-button">
+
+                    Crear cuenta
+
+                </button>
+
+                <!-- Separador -->
+                <div class="divider">
+                    <span>o</span>
+                </div>
+
+                <!-- Ir al login -->
+                <p class="register-text">
+                    ¿Ya tienes una cuenta?
+                </p>
+
+                <button
+                    type="button"
+                    class="btn btn-outline-primary register-button"
+                    (click)="goToLogin()">
+
+                    Iniciar sesión
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</main>
