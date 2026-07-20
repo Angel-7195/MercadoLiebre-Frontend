@@ -51,6 +51,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem(this.TOKEN_KEY);
+    localStorage.removeItem('user_id');
   }
 
   getUserId(): string | null {
