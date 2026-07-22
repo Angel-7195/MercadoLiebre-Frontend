@@ -32,6 +32,14 @@ export const routes: Routes = [
   },
 
   {
+    path: 'seller-register',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./features/sellers/pages/seller-register/seller-register')
+            .then(m => m.SellerRegister)
+  },
+
+  {
     path: '**',
     redirectTo: ''
   }
