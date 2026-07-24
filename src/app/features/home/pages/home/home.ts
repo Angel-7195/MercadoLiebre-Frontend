@@ -33,6 +33,19 @@ export class Home {
         this.router.navigate(['/profile']);
     }
 
+    goToSell() {
+
+    if (!this.isLoggedIn()) {
+
+        this.router.navigate(['/login']);
+        return;
+
+    }
+
+    this.router.navigate(['/seller-register']);
+
+    }
+
     searchProducts(): void {
         // Se implementará cuando exista el buscador conectado a la API.
     }
