@@ -1,0 +1,114 @@
+<header class="login-header">
+    <div class="container">
+
+        <div
+            class="logo"
+            (click)="goToHome()">
+
+            <i class="bi bi-shop"></i>
+            <span>MercadoLiebre</span>
+
+        </div>
+
+        <div class="header-actions">
+
+            <button
+                class="btn btn-link"
+                (click)="goToHome()">
+
+                Inicio
+
+            </button>
+
+            <button
+                class="btn btn-link">
+
+                Ayuda
+
+            </button>
+
+        </div>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="container">
+
+        <div class="seller-card">
+
+            <h2>Conviértete en vendedor</h2>
+
+            <p class="subtitle">
+                Completa la información para comenzar a publicar productos.
+            </p>
+
+            <form (ngSubmit)="registerSeller()">
+
+                <!-- Documento -->
+                <div class="form-group">
+
+                    <label for="document">
+                        Documento de identidad
+                    </label>
+
+                    <input
+                        type="text"
+                        id="document"
+                        name="document"
+                        class="form-control"
+                        [(ngModel)]="documentNumber"
+                        placeholder="Número de documento">
+
+                </div>
+
+                <!-- Nombre de la tienda -->
+                <div class="form-group">
+
+                    <label for="storeName">
+                        Nombre de la tienda
+                    </label>
+
+                    <input
+                        type="text"
+                        id="storeName"
+                        name="storeName"
+                        class="form-control"
+                        [(ngModel)]="storeName"
+                        placeholder="Ej. Tecnología Plus">
+
+                </div>
+
+                <!-- Teléfono -->
+                <div class="form-group">
+
+                    <label for="phone">
+                        Teléfono
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        class="form-control"
+                        [(ngModel)]="phone"
+                        placeholder="3001234567">
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary seller-button">
+
+                    Crear perfil de vendedor
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</main>
