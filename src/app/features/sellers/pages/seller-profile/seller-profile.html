@@ -1,0 +1,168 @@
+<!-- ================= HEADER ================= -->
+
+<header class="profile-header">
+
+    <div class="container">
+
+        <div
+            class="logo"
+            (click)="goToHome()">
+
+            <i class="bi bi-shop"></i>
+            <span>MercadoLiebre</span>
+
+        </div>
+
+        <div class="header-actions">
+
+            <button
+                class="btn btn-link"
+                (click)="goToHome()">
+
+                Inicio
+
+            </button>
+
+            <button
+                class="btn btn-link">
+
+                Ayuda
+
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+<!-- ================= PANEL ================= -->
+
+<main>
+
+    <div class="container">
+
+        <div class="profile-card">
+
+            <h2>Mi tienda</h2>
+
+            <p class="subtitle">
+                Administra la información de tu tienda y tus publicaciones.
+            </p>
+
+            <form (ngSubmit)="updateSeller()">
+
+                <!-- Documento -->
+
+                <div class="form-group">
+
+                    <label>
+                        Documento de identidad
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        [value]="documentNumber"
+                        readonly>
+
+                </div>
+
+                <!-- Tienda -->
+
+                <div class="form-group">
+
+                    <label>
+                        Nombre de la tienda
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="storeName"
+                        name="storeName">
+
+                </div>
+
+                <!-- Teléfono -->
+
+                <div class="form-group">
+
+                    <label>
+                        Teléfono
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="phone"
+                        name="phone">
+
+                </div>
+
+                <!-- Calificación -->
+
+                <div class="form-group">
+
+                    <label>
+                        Calificación
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        [value]="rating + ' ⭐'"
+                        readonly>
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary save-button">
+
+                    Guardar cambios
+
+                </button>
+
+            </form>
+
+            <hr>
+
+            <!-- Productos -->
+
+            <div class="products-section">
+
+                <div class="section-header">
+
+                    <h3>Mis publicaciones</h3>
+
+                    <button
+                        class="btn btn-success"
+                        (click)="goToCreateProduct()">
+
+                        <i class="bi bi-plus-circle"></i>
+                        Publicar producto
+
+                    </button>
+
+                </div>
+
+                <!-- Temporal -->
+
+                <div class="empty-products">
+
+                    <i class="bi bi-box-seam"></i>
+
+                    <p>
+                        Aún no has publicado productos.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
