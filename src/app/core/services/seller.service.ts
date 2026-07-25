@@ -52,4 +52,23 @@ export class SellerService {
 
   }
 
+  getMySeller(): Observable<Seller> {
+
+    return this.http.get<Seller>(
+      `${this.api}/me`
+    );
+
+  }
+
+  updateMySeller(
+    seller: UpdateSeller
+  ): Observable<Seller> {
+
+    return this.http.put<Seller>(
+      `${this.api}/me`,
+      seller
+    );
+
+  }
+
 }

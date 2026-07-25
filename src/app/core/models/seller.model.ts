@@ -5,6 +5,7 @@ export interface Seller {
     store_name: string;
     phone: string;
     rating: number;
+    created_at: string;
 }
 
 export interface CreateSeller {

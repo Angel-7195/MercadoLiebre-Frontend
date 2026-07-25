@@ -40,6 +40,14 @@ export const routes: Routes = [
   },
 
   {
+    path: 'seller-profile',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./features/sellers/pages/seller-profile/seller-profile')
+        .then(m => m.SellerProfile)
+  },
+
+  {
     path: '**',
     redirectTo: ''
   }

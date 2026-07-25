@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../../../../core/services/auth.service';
+import { SellerService } from '../../../../core/services/seller.service';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class Home {
 
     private readonly router = inject(Router);
     private readonly authService = inject(AuthService);
+    private readonly sellerService = inject(SellerService);
 
     goHome(): void {
         this.router.navigate(['/']);
@@ -33,16 +35,42 @@ export class Home {
         this.router.navigate(['/profile']);
     }
 
-    goToSell() {
+    goToSell(): void {
 
-    if (!this.isLoggedIn()) {
+        if (!this.isLoggedIn()) {
 
-        this.router.navigate(['/login']);
-        return;
+            this.router.navigate(['/login']);
+            return;
 
-    }
+        }
 
-    this.router.navigate(['/seller-register']);
+        this.sellerService.getMySeller().subscribe({
+
+            next: () => {
+
+            // El usuario ya tiene perfil de vendedor
+            this.router.navigate(['/seller-profile']);
+
+            },
+
+            error: (error) => {
+
+                if (error.status === 404) {
+
+                    // El usuario aún no es vendedor
+                    this.router.navigate(['/seller-register']);
+
+                } else {
+
+                    console.error(error);
+
+                    alert('No fue posible verificar el perfil de vendedor.');
+
+                }
+
+            }
+
+        });
 
     }
 
