@@ -1,0 +1,137 @@
+<header class="register-header">
+    <div class="container">
+        <div class="logo">
+            <i class="bi bi-shop"></i>
+            <span>MercadoLiebre</span>
+        </div>
+
+        <button class="btn btn-link">
+            Ayuda
+        </button>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+
+        <div class="register-card">
+
+            <h1>Publicar producto</h1>
+
+            <p class="subtitle">
+                Completa la información para publicar un nuevo producto.
+            </p>
+
+            <form (ngSubmit)="registerProduct()">
+
+                <!-- Categoría -->
+                <div class="mb-3">
+                    <label class="form-label">
+                        Categoría
+                    </label>
+
+                    <select
+                        class="form-select"
+                        [(ngModel)]="categoryId"
+                        name="categoryId"
+                        required>
+
+                        <option value="" disabled selected>
+                            Selecciona una categoría
+                        </option>
+
+                        <!-- Más adelante cargaremos estas opciones desde la API -->
+                        <option value="1">Tecnología</option>
+                        <option value="2">Hogar</option>
+                        <option value="3">Deportes</option>
+                        <option value="4">Alimentos</option>
+
+                    </select>
+                </div>
+
+                <!-- Nombre -->
+                <div class="mb-3">
+                    <label class="form-label">
+                        Nombre del producto
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="name"
+                        name="name"
+                        placeholder="Ej. Laptop Lenovo ThinkPad"
+                        required>
+                </div>
+
+                <!-- Marca -->
+                <div class="mb-3">
+                    <label class="form-label">
+                        Marca
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="brand"
+                        name="brand"
+                        placeholder="Ej. Lenovo"
+                        required>
+                </div>
+
+                <!-- Descripción -->
+                <div class="mb-3">
+                    <label class="form-label">
+                        Descripción
+                    </label>
+
+                    <textarea
+                        class="form-control"
+                        rows="5"
+                        [(ngModel)]="description"
+                        name="description"
+                        placeholder="Describe tu producto..."
+                        required>
+                    </textarea>
+                </div>
+
+                <!-- Precio -->
+                <div class="mb-4">
+                    <label class="form-label">
+                        Precio
+                    </label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+                            $
+                        </span>
+
+                        <input
+                            type="number"
+                            class="form-control"
+                            [(ngModel)]="price"
+                            name="price"
+                            min="1"
+                            placeholder="0"
+                            required>
+
+                    </div>
+                </div>
+
+                <!-- Botón -->
+                <button
+                    type="submit"
+                    class="btn btn-success w-100">
+
+                    <i class="bi bi-plus-circle me-2"></i>
+                    Publicar producto
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+</main>
