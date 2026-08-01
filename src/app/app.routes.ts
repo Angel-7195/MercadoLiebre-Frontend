@@ -48,6 +48,22 @@ export const routes: Routes = [
   },
 
   {
+    path: 'product-register',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./features/products/pages/product-register/product-register')
+        .then(m => m.ProductRegister)
+  },
+
+  {
+    path: 'product-edit/:id',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./features/products/pages/product-edit/product-edit')
+        .then(m => m.ProductEdit)
+  },
+
+  {
     path: '**',
     redirectTo: ''
   }
