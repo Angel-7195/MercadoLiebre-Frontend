@@ -149,13 +149,93 @@
 
                 <!-- Temporal -->
 
-                <div class="empty-products">
+                <!-- Si no hay productos -->
+
+                <div
+                    *ngIf="products.length === 0"
+                    class="empty-products">
 
                     <i class="bi bi-box-seam"></i>
 
                     <p>
                         Aún no has publicado productos.
                     </p>
+
+                </div>
+
+                <!-- Lista de productos -->
+
+                <div
+                    *ngIf="products.length > 0"
+                    class="products-list">
+
+                    <div
+                        class="product-card"
+                        *ngFor="let product of products">
+
+                        <!-- Imagen -->
+                        <div class="product-image">
+
+                            <img
+                                *ngIf="product.image_url"
+                                [src]="product.image_url"
+                                [alt]="product.name">
+
+                            <div
+                                *ngIf="!product.image_url"
+                                class="no-image">
+
+                                <i class="bi bi-image"></i>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Información -->
+
+                        <div class="product-info">
+
+                            <h4>{{ product.name }}</h4>
+
+                            <p class="brand">
+                                {{ product.brand }}
+                            </p>
+
+                            <p class="price">
+                                $ {{ product.price }}
+                            </p>
+
+                            <p class="stock">
+                                Stock: {{ product.stock }}
+                            </p>
+
+                        </div>
+
+                        <!-- Acciones -->
+
+                        <div class="product-actions">
+
+                            <button
+                                class="btn btn-primary"
+                                (click)="goToEditProduct(product.id)">
+
+                                <i class="bi bi-pencil"></i>
+                                Editar
+
+                            </button>
+
+                            <button
+                                class="btn btn-danger"
+                                (click)="deleteProduct(product.id)">
+
+                                <i class="bi bi-trash"></i>
+                                Eliminar
+
+                            </button>
+
+                        </div>
+
+                    </div>
 
                 </div>
 

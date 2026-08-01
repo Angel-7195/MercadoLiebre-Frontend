@@ -1,0 +1,154 @@
+:host {
+    display: block;
+    min-height: 100vh;
+    background: #ebebeb;
+}
+
+/* ================= HEADER ================= */
+
+.edit-header {
+    background: #ffe600;
+}
+
+.edit-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo {
+    cursor: pointer;
+}
+
+/* ================= MAIN ================= */
+
+main {
+    padding: 4rem 0;
+}
+
+main .container {
+    display: flex;
+    justify-content: center;
+}
+
+/* ================= CARD ================= */
+
+.edit-card {
+
+    background: white;
+
+    width: 100%;
+    max-width: 720px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .12);
+
+    padding: 2.5rem;
+
+}
+
+.edit-card h1 {
+    text-align: center;
+    margin-bottom: .5rem;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+/* ================= FORM ================= */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-label {
+    font-weight: 600;
+}
+
+.form-control,
+.form-select {
+    height: 46px;
+}
+
+textarea.form-control {
+    height: auto;
+    min-height: 140px;
+    resize: vertical;
+}
+
+/* ================= IMAGEN ================= */
+
+.image-preview {
+
+    display: flex;
+    justify-content: center;
+
+    padding: 1rem;
+
+    border: 2px dashed #ddd;
+    border-radius: 10px;
+
+    background: #fafafa;
+
+}
+
+.image-preview img {
+
+    max-width: 260px;
+
+    border-radius: 10px;
+
+    object-fit: contain;
+
+}
+
+/* ================= INPUT GROUP ================= */
+
+.input-group-text {
+    font-weight: 600;
+}
+
+/* ================= BOTÓN ================= */
+
+button[type="submit"] {
+
+    width: 100%;
+    height: 48px;
+
+    border-radius: 8px;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    transition: .2s;
+
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+    .edit-card {
+
+        padding: 2rem;
+
+        margin: 0 1rem;
+
+    }
+
+    .image-preview img {
+        max-width: 100%;
+    }
+
+}
