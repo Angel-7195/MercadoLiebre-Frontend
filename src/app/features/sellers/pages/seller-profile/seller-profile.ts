@@ -2,12 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { SellerService } from '../../../../core/services/seller.service';
+import { ProductService } from '../../../../core/services/product.service';
 
 import {
   Seller,
   UpdateSeller
 } from '../../../../core/models/seller.model';
+
+import {
+  Product
+} from '../../../../core/models/product.model';
 
 @Component({
   selector: 'app-seller-profile',
@@ -25,16 +31,22 @@ export class SellerProfile implements OnInit {
   storeName = '';
   phone = '';
   rating = 0;
+
   seller!: Seller;
+
+  products: Product[] = [];
 
   constructor(
     private sellerService: SellerService,
+    private productService: ProductService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
 
     this.loadSeller();
+
+    this.loadProducts();
 
   }
 
@@ -65,8 +77,64 @@ export class SellerProfile implements OnInit {
 
   }
 
+  loadProducts(): void {
+
+    this.productService.getMyProducts().subscribe({
+
+      next: (products) => {
+
+        this.products = products;
+
+      },
+
+      error: (error) => {
+
+        console.error(error);
+
+        alert('No fue posible cargar los productos.');
+
+      }
+
+    });
+
+  }
+
+  deleteProduct(productId: string): void {
+
+    const confirmed = confirm(
+      '¿Estás seguro de eliminar este producto?'
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    this.productService.deleteProduct(productId).subscribe({
+
+      next: () => {
+
+        alert('Producto eliminado correctamente.');
+
+        this.loadProducts();
+
+      },
+
+      error: (error) => {
+
+        console.error(error);
+
+        alert('No fue posible eliminar el producto.');
+
+      }
+
+    });
+
+  }
+
   goToHome(): void {
+
     this.router.navigate(['/']);
+
   }
 
   updateSeller(): void {
@@ -102,8 +170,16 @@ export class SellerProfile implements OnInit {
 
   goToCreateProduct(): void {
 
-    // Más adelante redirigiremos al formulario de creación de productos
-    console.log('Crear producto');
+    this.router.navigate(['/product-register']);
+
+  }
+
+  goToEditProduct(productId: string): void {
+
+    this.router.navigate([
+      '/product-edit',
+      productId
+    ]);
 
   }
 

@@ -1,0 +1,200 @@
+<header class="edit-header">
+    <div class="container">
+        <div class="logo">
+            <i class="bi bi-shop"></i>
+            <span>MercadoLiebre</span>
+        </div>
+
+        <button class="btn btn-link">
+            Ayuda
+        </button>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+
+        <div class="edit-card">
+
+            <h1>Editar producto</h1>
+
+            <p class="subtitle">
+                Actualiza la información de tu publicación.
+            </p>
+
+            <form (ngSubmit)="updateProduct()">
+
+                <!-- Imagen actual -->
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+                        Imagen actual
+                    </label>
+
+                    <div class="image-preview">
+
+                        <img
+                            [src]="imagePreview || imageUrl"
+                            alt="Imagen del producto">
+
+                    </div>
+
+                </div>
+
+                <!-- Nueva imagen -->
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+                        Cambiar imagen
+                    </label>
+
+                    <input
+                        type="file"
+                        class="form-control"
+                        accept="image/*"
+                        (change)="onImageSelected($event)">
+
+                    <div class="form-text">
+                        Selecciona una nueva imagen si deseas reemplazar la actual.
+                    </div>
+
+                </div>
+
+                <!-- Categoría -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Categoría
+                    </label>
+
+                    <select
+                        class="form-select"
+                        [(ngModel)]="categoryId"
+                        name="categoryId"
+                        required>
+
+                        <option
+                            *ngFor="let category of categories"
+                            [value]="category.id">
+
+                            {{ category.name }}
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- Nombre -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Nombre del producto
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="name"
+                        name="name"
+                        required>
+
+                </div>
+
+                <!-- Marca -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Marca
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="brand"
+                        name="brand"
+                        required>
+
+                </div>
+
+                <!-- Descripción -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Descripción
+                    </label>
+
+                    <textarea
+                        class="form-control"
+                        rows="5"
+                        [(ngModel)]="description"
+                        name="description"
+                        required>
+                    </textarea>
+
+                </div>
+
+                <!-- Precio -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Precio
+                    </label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-text">$</span>
+
+                        <input
+                            type="number"
+                            class="form-control"
+                            [(ngModel)]="price"
+                            name="price"
+                            min="1"
+                            required>
+
+                    </div>
+
+                </div>
+
+                <!-- Stock -->
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+                        Stock disponible
+                    </label>
+
+                    <input
+                        type="number"
+                        class="form-control"
+                        [(ngModel)]="stock"
+                        name="stock"
+                        min="0"
+                        required>
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary w-100">
+
+                    <i class="bi bi-check-circle me-2"></i>
+
+                    Guardar cambios
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+</main>
