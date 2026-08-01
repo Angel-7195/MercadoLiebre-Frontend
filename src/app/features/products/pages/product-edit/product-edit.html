@@ -1,4 +1,4 @@
-<header class="register-header">
+<header class="edit-header">
     <div class="container">
         <div class="logo">
             <i class="bi bi-shop"></i>
@@ -14,17 +14,56 @@
 <main>
     <div class="container">
 
-        <div class="register-card">
+        <div class="edit-card">
 
-            <h1>Publicar producto</h1>
+            <h1>Editar producto</h1>
 
             <p class="subtitle">
-                Completa la información para publicar un nuevo producto.
+                Actualiza la información de tu publicación.
             </p>
 
-            <form (ngSubmit)="registerProduct()">
+            <form (ngSubmit)="updateProduct()">
+
+                <!-- Imagen actual -->
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+                        Imagen actual
+                    </label>
+
+                    <div class="image-preview">
+
+                        <img
+                            [src]="imagePreview || imageUrl"
+                            alt="Imagen del producto">
+
+                    </div>
+
+                </div>
+
+                <!-- Nueva imagen -->
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+                        Cambiar imagen
+                    </label>
+
+                    <input
+                        type="file"
+                        class="form-control"
+                        accept="image/*"
+                        (change)="onImageSelected($event)">
+
+                    <div class="form-text">
+                        Selecciona una nueva imagen si deseas reemplazar la actual.
+                    </div>
+
+                </div>
 
                 <!-- Categoría -->
+
                 <div class="mb-3">
 
                     <label class="form-label">
@@ -36,10 +75,6 @@
                         [(ngModel)]="categoryId"
                         name="categoryId"
                         required>
-
-                        <option [ngValue]="''" disabled>
-                            Selecciona una categoría
-                        </option>
 
                         <option
                             *ngFor="let category of categories"
@@ -54,6 +89,7 @@
                 </div>
 
                 <!-- Nombre -->
+
                 <div class="mb-3">
 
                     <label class="form-label">
@@ -65,12 +101,12 @@
                         class="form-control"
                         [(ngModel)]="name"
                         name="name"
-                        placeholder="Ej. Laptop Lenovo ThinkPad"
                         required>
 
                 </div>
 
                 <!-- Marca -->
+
                 <div class="mb-3">
 
                     <label class="form-label">
@@ -82,12 +118,12 @@
                         class="form-control"
                         [(ngModel)]="brand"
                         name="brand"
-                        placeholder="Ej. Lenovo"
                         required>
 
                 </div>
 
                 <!-- Descripción -->
+
                 <div class="mb-3">
 
                     <label class="form-label">
@@ -99,14 +135,14 @@
                         rows="5"
                         [(ngModel)]="description"
                         name="description"
-                        placeholder="Describe tu producto..."
                         required>
                     </textarea>
 
                 </div>
 
                 <!-- Precio -->
-                <div class="mb-4">
+
+                <div class="mb-3">
 
                     <label class="form-label">
                         Precio
@@ -114,9 +150,7 @@
 
                     <div class="input-group">
 
-                        <span class="input-group-text">
-                            $
-                        </span>
+                        <span class="input-group-text">$</span>
 
                         <input
                             type="number"
@@ -124,7 +158,6 @@
                             [(ngModel)]="price"
                             name="price"
                             min="1"
-                            placeholder="0"
                             required>
 
                     </div>
@@ -132,6 +165,7 @@
                 </div>
 
                 <!-- Stock -->
+
                 <div class="mb-4">
 
                     <label class="form-label">
@@ -144,52 +178,17 @@
                         [(ngModel)]="stock"
                         name="stock"
                         min="0"
-                        placeholder="Cantidad disponible"
                         required>
 
-                    <div class="form-text">
-                        Indica la cantidad de unidades disponibles para la venta.
-                    </div>
-
                 </div>
 
-                <!-- Imagen -->
-                <div class="mb-4">
-
-                    <label class="form-label">
-                        Imagen del producto
-                    </label>
-
-                    <input
-                        type="file"
-                        class="form-control"
-                        accept="image/*"
-                        (change)="onImageSelected($event)">
-
-                    <div
-                        *ngIf="imagePreview"
-                        class="image-preview mt-3">
-
-                        <img
-                            [src]="imagePreview"
-                            alt="Vista previa del producto"
-                            class="img-fluid rounded shadow">
-
-                    </div>
-
-                    <div class="form-text">
-                        Formatos permitidos: JPG, PNG o WEBP.
-                    </div>
-
-                </div>
-
-                <!-- Botón -->
                 <button
                     type="submit"
-                    class="btn btn-success w-100">
+                    class="btn btn-primary w-100">
 
-                    <i class="bi bi-plus-circle me-2"></i>
-                    Publicar producto
+                    <i class="bi bi-check-circle me-2"></i>
+
+                    Guardar cambios
 
                 </button>
 

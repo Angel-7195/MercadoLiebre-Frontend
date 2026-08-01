@@ -56,6 +56,14 @@ export const routes: Routes = [
   },
 
   {
+    path: 'product-edit/:id',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./features/products/pages/product-edit/product-edit')
+        .then(m => m.ProductEdit)
+  },
+
+  {
     path: '**',
     redirectTo: ''
   }

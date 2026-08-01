@@ -1,38 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ProductService } from '../../../../core/services/product.service';
 import { CategoryService } from '../../../../core/services/category.service';
 import { UploadService } from '../../../../core/services/upload.service';
 
-import { CreateProduct } from '../../../../core/models/product.model';
 import { Category } from '../../../../core/models/category.model';
+import {
+  Product,
+  UpdateProduct
+} from '../../../../core/models/product.model';
 
 @Component({
-  selector: 'app-product-register',
+  selector: 'app-product-edit',
   standalone: true,
   imports: [
     CommonModule,
     FormsModule
   ],
-  templateUrl: './product-register.html',
-  styleUrl: './product-register.scss'
+  templateUrl: './product-edit.html',
+  styleUrl: './product-edit.scss'
 })
-export class ProductRegister implements OnInit {
+export class ProductEdit implements OnInit {
 
-  categoryId: string = '';
+  productId = '';
 
-  name: string = '';
+  categoryId = '';
 
-  description: string = '';
+  name = '';
 
-  brand: string = '';
+  description = '';
+
+  brand = '';
 
   price: number | null = null;
 
   stock: number | null = null;
+
+  imageUrl = '';
 
   selectedImage: File | null = null;
 
@@ -41,13 +48,30 @@ export class ProductRegister implements OnInit {
   categories: Category[] = [];
 
   constructor(
+    private route: ActivatedRoute,
+    private router: Router,
     private productService: ProductService,
     private categoryService: CategoryService,
-    private uploadService: UploadService,
-    private router: Router
+    private uploadService: UploadService
   ) {}
 
   ngOnInit(): void {
+
+    this.loadCategories();
+
+    const id = this.route.snapshot.paramMap.get('id');
+
+    if (id) {
+
+      this.productId = id;
+
+      this.loadProduct(id);
+
+    }
+
+  }
+
+  loadCategories(): void {
 
     this.categoryService.getCategories().subscribe({
 
@@ -59,7 +83,7 @@ export class ProductRegister implements OnInit {
 
       error: (error) => {
 
-        console.error('Error al cargar las categorías.', error);
+        console.error(error);
 
       }
 
@@ -67,7 +91,43 @@ export class ProductRegister implements OnInit {
 
   }
 
-  registerProduct(): void {
+  loadProduct(productId: string): void {
+
+    this.productService.getProduct(productId).subscribe({
+
+      next: (product: Product) => {
+
+        this.categoryId = product.category_id;
+
+        this.name = product.name;
+
+        this.description = product.description ?? '';
+
+        this.brand = product.brand ?? '';
+
+        this.price = Number(product.price);
+
+        this.stock = product.stock;
+
+        this.imageUrl = product.image_url ?? '';
+
+        this.imagePreview = this.imageUrl;
+
+      },
+
+      error: (error) => {
+
+        console.error(error);
+
+        alert('No fue posible cargar el producto.');
+
+      }
+
+    });
+
+  }
+
+  updateProduct(): void {
 
     if (
       !this.categoryId ||
@@ -78,7 +138,7 @@ export class ProductRegister implements OnInit {
       return;
     }
 
-    const product: CreateProduct = {
+    const product: UpdateProduct = {
 
       category_id: this.categoryId,
 
@@ -102,15 +162,15 @@ export class ProductRegister implements OnInit {
 
           product.image_url = response.url;
 
-          this.createProduct(product);
+          this.saveProduct(product);
 
         },
 
         error: (error) => {
 
-          console.error('Error al subir la imagen.', error);
+          console.error(error);
 
-          alert('No fue posible subir la imagen.');
+          alert('No fue posible subir la nueva imagen.');
 
         }
 
@@ -118,21 +178,22 @@ export class ProductRegister implements OnInit {
 
     } else {
 
-      this.createProduct(product);
+      this.saveProduct(product);
 
     }
 
   }
 
-  private createProduct(product: CreateProduct): void {
+  private saveProduct(product: UpdateProduct): void {
 
-    this.productService.createProduct(product).subscribe({
+    this.productService.updateProduct(
+      this.productId,
+      product
+    ).subscribe({
 
-      next: (createdProduct) => {
+      next: () => {
 
-        console.log('Producto creado correctamente.', createdProduct);
-
-        alert('¡Producto publicado correctamente!');
+        alert('Producto actualizado correctamente.');
 
         this.router.navigate(['/seller-profile']);
 
@@ -140,9 +201,9 @@ export class ProductRegister implements OnInit {
 
       error: (error) => {
 
-        console.error('Error al crear el producto.', error);
+        console.error(error);
 
-        alert('No fue posible crear el producto.');
+        alert('No fue posible actualizar el producto.');
 
       }
 
