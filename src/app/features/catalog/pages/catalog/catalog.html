@@ -1,1 +1,212 @@
-<p>catalog works!</p>
+<!-- HEADER -->
+<header class="header">
+
+    <div class="container">
+
+        <div class="top-bar">
+
+            <!-- Logo -->
+            <div
+                class="logo"
+                (click)="goHome()">
+
+                <i class="bi bi-shop"></i>
+
+                <span>MercadoLiebre</span>
+
+            </div>
+
+
+            <!-- Buscador -->
+            <div class="search-bar">
+
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Buscar productos, marcas y más...">
+
+                <button class="btn btn-search">
+
+                    <i class="bi bi-search"></i>
+
+                </button>
+
+            </div>
+
+
+            <!-- Acciones -->
+            <div class="actions">
+
+                <!-- Usuario NO autenticado -->
+                <ng-container
+                    *ngIf="!isLoggedIn(); else loggedUser">
+
+                    <button
+                        class="btn btn-login"
+                        (click)="goToLogin()">
+
+                        Ingresar
+
+                    </button>
+
+                    <button
+                        class="btn btn-register"
+                        (click)="goToRegister()">
+
+                        Crear cuenta
+
+                    </button>
+
+                </ng-container>
+
+
+                <!-- Usuario autenticado -->
+                <ng-template #loggedUser>
+
+                    <button
+                        class="btn btn-login"
+                        (click)="goToProfile()">
+
+                        Mi cuenta
+
+                    </button>
+
+                    <button
+                        class="btn btn-register"
+                        (click)="logout()">
+
+                        Cerrar sesión
+
+                    </button>
+
+                </ng-template>
+
+
+                <!-- Carrito -->
+                <button class="btn btn-cart">
+
+                    <i class="bi bi-cart3"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Menú -->
+        <nav class="menu">
+
+            <a href="#">
+                Categorías
+            </a>
+
+            <button
+                class="btn btn-link"
+                (click)="goToSell()">
+
+                Vender
+
+            </button>
+
+            <a href="#">
+                Ayuda
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- CATÁLOGO -->
+<main class="catalog-container">
+
+    <h1>Catálogo</h1>
+
+
+    @if (loading) {
+
+        <p>Cargando productos...</p>
+
+    }
+
+    @else if (errorMessage) {
+
+        <p>{{ errorMessage }}</p>
+
+    }
+
+    @else if (products.length === 0) {
+
+        <p>No hay productos publicados.</p>
+
+    }
+
+    @else {
+
+        <div class="products-grid">
+
+            @for (product of products; track product.id) {
+
+                <article class="product-card">
+
+                    <!-- Imagen -->
+                    <div class="product-image">
+
+                        @if (product.image_url) {
+
+                            <img
+                                [src]="product.image_url"
+                                [alt]="product.name">
+
+                        }
+
+                        @else {
+
+                            <div class="no-image">
+
+                                Sin imagen
+
+                            </div>
+
+                        }
+
+                    </div>
+
+
+                    <!-- Información -->
+                    <div class="product-info">
+
+                        <h2>
+                            {{ product.name }}
+                        </h2>
+
+                        <p class="brand">
+                            {{ product.brand }}
+                        </p>
+
+                        <p class="description">
+                            {{ product.description }}
+                        </p>
+
+                        <p class="price">
+                            ${{ product.price | number }}
+                        </p>
+
+                        <p class="stock">
+                            Stock: {{ product.stock }}
+                        </p>
+
+                    </div>
+
+                </article>
+
+            }
+
+        </div>
+
+    }
+
+</main>

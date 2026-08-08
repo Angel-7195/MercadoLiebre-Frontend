@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../../core/services/auth.service';
 import { SellerService } from '../../../../core/services/seller.service';
 
-
 @Component({
     selector: 'app-home',
     standalone: true,
@@ -33,6 +32,10 @@ export class Home {
 
     goToProfile(): void {
         this.router.navigate(['/profile']);
+    }
+
+    goToCatalog(): void {
+        this.router.navigate(['/catalog']);
     }
 
     goToSell(): void {

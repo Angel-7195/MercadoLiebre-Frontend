@@ -64,6 +64,13 @@ export const routes: Routes = [
   },
 
   {
+  path: 'catalog',
+    loadComponent: () =>
+      import('./features/catalog/pages/catalog/catalog')
+        .then(m => m.Catalog)
+  },
+
+  {
     path: '**',
     redirectTo: ''
   }
